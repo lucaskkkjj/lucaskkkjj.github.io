@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- Nome:Lucas Breno De Castro Alves Coelho Nº:25 Turma:3ºA                     
+     Nome:Luca Verdiamitti Nº24 Turma:3ºA -->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Números Primos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Verificador de Números Primos</h1>
+    <label for="numero">Digite um número natural:</label>
+    <input type="number" id="numero" min="2">
+    <button onclick="verificarPrimo()">Verificar</button>
+    <canvas id="canvas" width="300" height="150"></canvas>
+    <script>
+        function verificarPrimo() {
+            const numero = document.getElementById('numero').value;
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (numero < 2) {
+                ctx.fillText('O número deve ser maior ou igual a 2.', 10, 50);
+            } else {
+                let primo = true;
+                for (let i = 2; i <= Math.sqrt(numero); i++) {
+                    if (numero % i === 0) {
+                        primo = false;
+                        break;
+                    }
+                }
+                if (primo) {
+                    ctx.fillText(`${numero} é primo.`, 10, 50);
+                } else {
+                    ctx.fillText(`${numero} não é primo.`, 10, 50);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
